@@ -6,8 +6,8 @@ This elegant application dynamically retrieves a list of products to be sold by 
 ## Demonstration
 The Wholesaler's product list for Cardstock (https://www.thewholesaler.biz/Cardstock):
 
-![Alt text](https://imgur.com/8Yat0Ch)
+![Alt text](https://i.imgur.com/8Yat0Ch.png)
 
 Resulting .csv file after running application (example included in project directory):
 
-![Alt text](https://imgur.com/nSL7Qe8)
+![Alt text](https://i.imgur.com/nSL7Qe8.png)
