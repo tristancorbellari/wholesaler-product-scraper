@@ -22,19 +22,11 @@ class Product:
         return setattr(self, key, value)
 
     def __str__(self):
-        return "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n\n".format(
-            self["Site Category"],
-            self["Image Src"],
-            self["Code"],
-            self["Title"],
-            self["Price"],
-            self["Body (HTML)"],
-            self["Collection"],
-            self["Vendor"],
-            self["Weight"],
-            self["Weight Unit"],
-            self["Status"],
-        )
+        res = ""
+        for item in self.items():
+            res += str(item[0]) + ": " + str(item[1]) + "\n"
+
+        return res
 
     def items(self):
-        return [(v, getattr(self, v)) for v in vars(self)]
+        return [[v, getattr(self, v)] for v in vars(self)]

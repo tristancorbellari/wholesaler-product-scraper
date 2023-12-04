@@ -3,6 +3,8 @@ import util.constants as c
 
 
 def clean_cardstock(data):
+    print("Cleaning Cardstock...")
+
     for d in data:
         d["Body (HTML)"] = c.CARDSTOCK_DESCRIPTION
 
@@ -29,14 +31,17 @@ def clean_cardstock(data):
 
 
 def clean_chalk_ink(data):
+    print("Cleaning Chalk Ink...")
     return data
 
 
 def clean_flowers(data):
+    print("Cleaning Flowers...")
     return data
 
 
 def remove_trailing_spaces(data):
+    print("Removing trailing spaces...")
     for d in data:
         for key, value in d.items():
             if key != "Price":
@@ -46,9 +51,14 @@ def remove_trailing_spaces(data):
 
 
 def clean_data(data):
+    print("Starting data cleaning...")
+
     data = clean_cardstock(data)
     data = clean_chalk_ink(data)
     data = clean_flowers(data)
 
     data = remove_trailing_spaces(data)
+
+    print("Data cleaning completed!\n")
+
     return data
