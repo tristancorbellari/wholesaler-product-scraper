@@ -33,3 +33,6 @@ class Product:
 
     def items(self):
         return [[v, getattr(self, v)] for v in vars(self)]
+    
+    def keys(self):
+        return [v for v in vars(self)]
