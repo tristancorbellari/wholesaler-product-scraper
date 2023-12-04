@@ -1,3 +1,5 @@
+FIELDNAMES = ["Site Category", "Image Src", "Code", "Title", "Price", "Body (HTML)", "Collection", "Vendor", "Weight", "Weight Unit", "Status"]
+
 VENDOR = "The Wholesaler"
 
 DEFAULT_WEIGHT_UNIT = "kg"

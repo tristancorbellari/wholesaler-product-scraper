@@ -2,6 +2,8 @@ import re
 import requests
 import util.constants as c
 
+from models.product import Product
+
 
 def regex_match(regex, text):
     result = re.search(regex, text)
@@ -13,6 +15,7 @@ def regex_match(regex, text):
 
 
 def product_from_text(text, url):
+    site_category = url[(url.rfind('/') + 1):]
     image_url = regex_match(r"href: \'(.*?)\'", text)
     code = regex_match(r'<span class=\\"medgreen\\">(.*?)<br \/>', text)
     title = regex_match(r"<strong>(.*?)<\/strong>", text)
@@ -21,21 +24,7 @@ def product_from_text(text, url):
         r'<span class=\\"popup-full-description\\"><p>(.*?)<\/p><\/span>', text
     )
 
-    product = {
-        "Site Category": url[(url.rfind('/') + 1):],
-        "Image Src": image_url,
-        "Code": code,
-        "Title": title,
-        "Price": price,
-        "Body (HTML)": description,
-        "Collection": "",
-        "Vendor": c.VENDOR,
-        "Weight": "",
-        "Weight Unit": c.DEFAULT_WEIGHT_UNIT,
-        "Status": c.DEFAULT_STATUS
-    }
-
-    return product
+    return Product(site_category, image_url, code, title, price, description)
 
 
 def scrape_webpage(url):
