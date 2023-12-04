@@ -14,3 +14,5 @@ CHALK_INK_PRICE = "40.00"
 CHALK_INK_COLLECTION = "Inks & Paints"
 
 FLOWERS_URL = "https://www.thewholesaler.biz/Flowers"
+FLOWERS_DESCRIPTION = "Exquisite handmade paper flowers, perfect for embellishing scrapbook pages and cards."
+FLOWERS_COLLECTION = "Embellishments"
