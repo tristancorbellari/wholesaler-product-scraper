@@ -1,6 +1,7 @@
 import re
 import requests
 import util.constants as c
+import util.operations as o
 
 from models.product import Product
 
@@ -15,7 +16,7 @@ def regex_match(regex, text):
 
 
 def product_from_text(text, url):
-    site_category = url[(url.rfind("/") + 1) :]
+    site_category = o.end_of_url(url)
     image_url = regex_match(r"href: \'(.*?)\'", text)
     code = regex_match(r'<span class=\\"medgreen\\">(.*?)<br \/>', text)
     title = regex_match(r"<strong>(.*?)<\/strong>", text)
@@ -28,7 +29,7 @@ def product_from_text(text, url):
 
 
 def scrape_webpage(url):
-    print("Starting website scraping...")
+    print("Scraping {}...".format(url))
 
     page = requests.get(url)
     data = page.text
@@ -37,7 +38,7 @@ def scrape_webpage(url):
         r"var gallery = \[\{name: \'products\',files: \[\{(.*?)\}\]", data
     )
 
-    print("Website scraping completed!\n")
+    print("Scraping completed!\n")
 
     if result:
         return [product_from_text(p, url) for p in result.group(1).split(r"},{ ")]

@@ -1,5 +1,6 @@
 import re
 import util.constants as c
+import util.operations as o
 
 
 def clean_cardstock(data):
@@ -52,9 +53,12 @@ def remove_trailing_spaces(data):
 def clean_data(data):
     print("Starting data cleaning...")
 
-    data = clean_cardstock(data)
-    data = clean_chalk_ink(data)
-    data = clean_flowers(data)
+    if data[0]["Site Category"] == o.end_of_url(c.CARDSTOCK_URL):
+        data = clean_cardstock(data)
+    elif data[0]["Site Category"] == o.end_of_url(c.CHALK_INK_URL):
+        data = clean_chalk_ink(data)
+    elif data[0]["Site Category"] == o.end_of_url(c.FLOWERS_URL):
+        data = clean_flowers(data)
 
     data = remove_trailing_spaces(data)
 
