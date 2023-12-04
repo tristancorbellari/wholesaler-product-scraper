@@ -7,7 +7,7 @@ class Product:
         self["Image Src"] = image_url
         self["Code"] = code
         self["Title"] = title
-        self["Price"] = price
+        self["Price"] = str(price)
         self["Body (HTML)"] = description
         self["Collection"] = ""
         self["Vendor"] = c.VENDOR
@@ -27,6 +27,9 @@ class Product:
             res += str(item[0]) + ": " + str(item[1]) + "\n"
 
         return res
+
+    def __iter__(self):
+        return iter([getattr(self, v) for v in vars(self)])
 
     def items(self):
         return [[v, getattr(self, v)] for v in vars(self)]

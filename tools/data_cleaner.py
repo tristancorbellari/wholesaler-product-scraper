@@ -44,8 +44,7 @@ def remove_trailing_spaces(data):
     print("Removing trailing spaces...")
     for d in data:
         for key, value in d.items():
-            if key != "Price":
-                d[key] = re.sub(r"( *[^A-Za-z0-9\.\)]* *)$", "", value)
+            d[key] = re.sub(r"( *[^A-Za-z0-9\.\)]* *)$", "", value)
 
     return data
 

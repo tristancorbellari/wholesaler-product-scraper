@@ -11,8 +11,8 @@ def export_to_csv(data):
     filename = datetime.now().strftime("ProductList_%d-%m-%Y_%H%M%S.csv")
 
     with open(filename, "w", encoding="UTF8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=c.FIELDNAMES)
-        writer.writeheader()
+        writer = csv.writer(f)
+        writer.writerow(c.FIELDNAMES)
         writer.writerows(data)
 
     f.close()
